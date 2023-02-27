@@ -1,5 +1,8 @@
 # CHIPS Alliance GSoC 2023 project ideas
 
+1. [Create FEOL Classes in OpenROAD and a GDS writer](#create-feol-classes-in-openroad-and-a-gds-writer)
+1. [Simplify and automate the Verilog Generation Step in OpenFASOC](#simplify-and-automate-the-verilog-generation-step-in-openfasoc)
+1. [Introduce Special Router Feature and Utilize in OpenFASoC](#introduce-special-router-feature-and-utilize-in-openfasoc)
 1. [FPGA chips database visualizer improvements](#fpga-chips-database-improvements)
 1. [DSP hard block integration in F4PGA](#dsp-hard-block-integration-in-f4pga)
 1. [Improve the visual representation of the placement done by VTR](#improve-the-visual-representation-of-the-placement-done-by-vtr)
@@ -7,6 +10,149 @@
 1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7)
 1. [FPGA Tool Performance Results Visualization](#fpga-tool-performance-results-visualization)
 
+## Create FEOL Classes in OpenROAD and a GDS writer
+
+OpenFASOC uses OpenROAD heavily for AMS design.
+To extend our usage of OpenROAD to more customized layout generation of the designs, it would be necessary to add support of FEOL (Fron End of Line) layers in OpenROAD.
+This would be unheard of that a place, and route tool understands active layers.
+We could potentially use the odb format to store this information and eventually create shapes for active and passive devices.
+Additionally, creating a gds writer in OpenROAD would make the tool more complete and the need tp call external tools to write a gds.
+The current workarounds are hacks that do not yield ideal results.
+
+### Task description
+
+1. Investigate Layer related classes in OpenROAD
+1. Process metal stack data from open source PDKs to automatically load FEOL layers in OpenROAD when needed
+
+    1. Create a proof of concept where a simple auxiliary cell or Standard cell is created within OpenROAD for OpenFASOC’s usage
+    1. Explore potential leads on how to create a full generator within OpenROAD
+
+        1. The temperature sensor could be used as an example
+
+1. Create a GDS writer and reader in OpenROAD
+
+    1. Work on feature PR with team-members from OpenROAD
+    1. Implement and thoroughly test the new GDS writer for bugs or issues
+    1. Review with Openroad team (PR review)
+
+1. Create a simple generator within OpenROAD
+
+### Expected outcomes
+
+The goal is to create more possibilities for OpenFASOC within OpenROAD by creating support for FEOL layers. And making OpenROAD more complete by adding a write gds command.
+
+### Required skills
+
+* Programming languages: Python, C++
+* Operating system knowledge: Linux, Windows
+* Nice to have: Circuit level and Physical Design basic understanding
+
+### Difficulty
+
+Medium: The task does require python and C++ coding skills are needed, circuit IC design knowledge would be useful.
+
+_Duration_: 350 hours
+
+_Mentor_: [@msaligane](https://github.com/msaligane)
+
+## Simplify and automate the Verilog Generation Step in OpenFASOC
+
+OpenFASOC creates an automated generation of the Verilog representation of a design/block using Python and template files.
+The existing Verilog generation is design dependent and isn’t using consistent formatting.
+Also, depending on the complexity of the design, sweeping the number of auxiliary cells can become complex and time consuming.
+The current workarounds are hacks that do not yield ideal results.
+
+### Task description
+
+1. Investigate the existing generators in OpenFASOC and FASOC
+
+    1. Explore new ways of generating Verilog using tools existing open source tools
+    1. Propose new ideas to simplify th verilog generation
+
+1. Implement Python code that allows Verilog generation for new analog generators
+
+    1. Review all the generators in FASOC and implement them in OpenFASOC
+    1. Create new templates and Python tools for new blocks
+
+1. Implement regression tests in the CI to make sure functionality isn’t broken
+
+    1. Add Verilog to Spice generation to be able to simulate the netlist before synthesis
+
+1. Implement the new Verilog generation flow in OpenFASOC and test it on existing generators
+
+### Expected outcomes
+
+The goal is to simplify the Verilog Generation step in OpenFASOC and reduce the time to create a new generator
+
+### Required skills
+
+* Programming languages: Python, C++
+* Operating system knowledge: Linux, Windows
+* Nice to have: Circuit level and Physical Design basic understanding
+
+### Difficulty
+
+Medium: The task does require python and C++ coding skills are needed, circuit IC design knowledge would be useful.
+
+_Duration_: 350 hours
+
+_Mentor_: [@msaligane](https://github.com/msaligane)
+
+## Introduce Special Router Feature and Utilize in OpenFASoC
+
+OpenFASoC generators create multi-voltage domain designs using Openroad.
+Currently, these routes require special scripts (python and tcl scripts) to identify and create routes from analog cells to power straps and between macros in different voltage domains.
+Routes to power nets (for example the temp-sense HEADER routes) require creating a rpin on the power strap and configuring it as a “signal” type route; This is because the power nets are not routed by signal routers in Openroad.
+Generators currently use non default rules to allow for high quality routing, but the route layer cannot be specified (and the route uses the signal router).
+The signal type route additionally createst LVS issues (rpin signal net causes issues with LVS); Custom OpenFASoC python scripts are used to resolve the issues caused by rpin/pin naming.
+This feature was first proposed in summer 2022 and has been brought up several times when discussing temp-sense-gen and ldo-gen (see OR issue 2209 below).
+The issues caused by these hacks have been a constant source of bugs in OpenFASoC. The OpenFASoC team has attempted to improve the quality of the routes, but a full solution in Openroad would yield much better results.
+The current workarounds are hacks that do not yield ideal results.
+
+### Task description
+
+1. Investigate routing algorithms that are well suited for a special router
+
+    1. Implement test algorithms or explore existing literature and documented results.
+
+1. Understand relevant portions of the Openroad code-base
+
+    1. Communicate further with Openroad team about proposed algorithms and appropriate changes
+    1. Plan router with Openroad team
+
+1. Create: code and merge new feature to Openroad
+
+    1. Work on feature PR with team-members
+    1. Implement and thoroughly test the new router for bugs or issues
+    1. Review with Openroad team (PR review)
+
+1. Utilize p2p feature in OpenFASoC
+
+    1. Test this feature with ldo-gen
+
+### Expected outcomes
+
+The aim of this task is to create a special router in Openroad and begin utilizing it in the OpenFASoC generators.
+
+### Required skills
+
+* Programming languages: Python, C++
+* Operating system knowledge: Linux, Windows
+* Nice to have: Circuit level and Physical Design basic understanding
+
+### Difficulty
+
+Medium: The task does require python and C++ coding skills are needed, circuit IC design knowledge would be useful.
+
+_Duration_: 350 hours
+
+_Mentor_: [@msaligane](https://github.com/msaligane)
+
+### Further reading
+
+* [Open FASoC repo](https://github.com/idea-fasoc/OpenFASOC)
+* [Temperature sensor Openroad issue 2209](https://github.com/The-OpenROAD-Project/OpenROAD/issues/2209)
+* [LVS workaround for extracted netlist pin/rpin hack](https://github.com/idea-fasoc/OpenFASOC/blob/main/openfasoc/common/drc-lvs-check/process_extracted_pins.py)
 
 ## FPGA chips database visualizer improvements
 
