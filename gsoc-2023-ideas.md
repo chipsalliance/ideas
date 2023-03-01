@@ -5,7 +5,6 @@
 1. [Introduce Special Router Feature and Utilize in OpenFASoC](#introduce-special-router-feature-and-utilize-in-openfasoc)
 1. [FPGA chips database visualizer improvements](#fpga-chips-database-improvements)
 1. [DSP hard block integration in F4PGA](#dsp-hard-block-integration-in-f4pga)
-1. [Improve the visual representation of the placement done by VTR](#improve-the-visual-representation-of-the-placement-done-by-vtr)
 1. [Spartan6 bitstream documentation](#spartan6-bitstream-documentation)
 1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7)
 1. [FPGA Tool Performance Results Visualization](#fpga-tool-performance-results-visualization)
