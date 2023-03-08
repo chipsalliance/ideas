@@ -8,6 +8,7 @@
 1. [Spartan6 bitstream documentation](#spartan6-bitstream-documentation)
 1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7)
 1. [FPGA Tool Performance Results Visualization](#fpga-tool-performance-results-visualization)
+1. [Use of F4PGA in Makerchip Virtual FPGA Lab](#use-of-f4pga-in-makerchip-virtual-fpga-lab)
 
 ## Create FEOL Classes in OpenROAD and a GDS writer
 
@@ -304,3 +305,34 @@ Medium: the project touches different aspects of the tool, from data generation 
 _Duration_: 175 hours or 350 hours
 
 _Mentor_: [@tmichalak](https://github.com/tmichalak)
+
+
+## Use of F4PGA in Makerchip Virtual FPGA Lab
+
+A [Virtual FPGA Lab](https://github.com/os-fpga/Virtual-FPGA-Lab) was developed in GSoC 2021 that enables web-based FPGA development with deployment to local Xilinx FPGAs. This project would extend this work to utilize F4PGA, enabling deployment to a wider range of FPGA platforms, and providing for F4PGA another virtual development environment.
+
+### Task description
+
+* Rewrite shell script to be OS- and FPGA-platform-independent, by utilizing F4PGA.
+* Supply FPGA interface constraints compatible with Virtual Lab projects in the format required by F4PGA.
+* Test and debug various FPGA Lab examples on various FPGA platforms (as limited by access to these platforms).
+* Document.
+* Create demo video(s) and basic tutorial(s).
+
+### Expected outcomes
+
+A cloud-based FPGA development environment with deployment options for a range of F4PGA-supported FPGA platforms.
+
+### Skills Required
+  - FPGA development
+  - Python
+  - [F4PGA](https://f4pga.org/) (can learn during project)
+  - [TL-Verilog](https://www.redwoodeda.com/tl-verilog), [Makerchip](http://makerchip.com/), and [Virtual FPGA Lab](https://github.com/os-fpga/Virtual-FPGA-Lab) (can learn during project)
+
+### Difficulty
+
+Medium: The project requires the mentee to learn tools with some degree of independence to determine the best approach for automation and integration.
+
+_Duration_: 175 hours
+
+_Mentor_: [Steve Hoover](https://www.linkedin.com/in/steve-hoover-a44b607/)
