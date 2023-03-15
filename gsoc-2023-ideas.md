@@ -9,6 +9,7 @@
 1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7)
 1. [FPGA Tool Performance Results Visualization](#fpga-tool-performance-results-visualization)
 1. [Use of F4PGA in Makerchip Virtual FPGA Lab](#use-of-f4pga-in-makerchip-virtual-fpga-lab)
+1. [Implement Zc RISC-V ISA Extension in Rocket Chip](#implement-zc-risc-v-isa-extension-in-rocket-chip)
 
 ## Create FEOL Classes in OpenROAD and a GDS writer
 
@@ -336,3 +337,47 @@ Medium: The project requires the mentee to learn tools with some degree of indep
 _Duration_: 175 hours
 
 _Mentor_: [Steve Hoover](https://www.linkedin.com/in/steve-hoover-a44b607/)
+
+## Implement Zc RISC-V ISA Extension in Rocket Chip
+
+[Z**c** RISC-V ISA Extension](https://github.com/riscv/riscv-code-size-reduction) is a family of extensions intended for **c**ode size reduction, as an augmentation to the existing ["C" Standard Extension for Compressed Instructions](https://github.com/riscv/riscv-isa-manual/blob/master/src/c.tex).
+
+This extension is in [Frozen state](https://riscv.org/spec-state) at the time of writing and changes are highly unlikely, so it is safe to implement it in RTL now.
+
+Rocket Chip already supports "C" standard Extension (i.e. Zca, Zcf and Zcd) so it has the infra for Zc extensions.
+
+Implementing Zcb is straightforward and can be used as a practice to learn the rocket chip frontend.
+
+Implementing Zcmp is not too difficult and is highly wanted for rocket chip as it is widely used as an embedded core.
+
+Implementing Zcmt requires significant change in the frontend.
+
+### Task description
+
+Extensions should be implemented one by one and each one could be a standalone PR. Each PR should come with corresponding tests, possibly from [riscv-arch-test](https://github.com/riscv-non-isa/riscv-arch-test)
+
+* Implement Zcb
+  - Add expanding of Zcb instructions in RVCExpander
+* Implement Zcmp
+  - Add a state machine in IBuf along with RVCExpander to emit a series of decompressed instructions
+* Implement Zcmt
+  - Add JVT CSR in CSRFile
+  - Add another port to imem and IBuf can send request on table entries via it
+  - To discuss with mentee on details
+
+### Expected outcomes
+
+RTL in Chisel implementing Zc\* extensions for Rocket Chip.
+
+### Skills Required
+  - Understanding of RISC-V ISA
+  - Chisel for RTL
+  - Python, RISC-V assembly for riscv-arch-test
+
+### Difficulty
+
+Hard: The project requires deep understanding of rocket chip micro-architecture and significant changes to that
+
+_Duration_: 350 hours
+
+_Mentor_: [Hongren Zheng](https://github.com/ZenithalHourlyRate)
