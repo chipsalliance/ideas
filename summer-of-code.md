@@ -1,4 +1,4 @@
-# CHIPS Alliance project GSoC 2023 contribution guidelines
+# CHIPS Alliance project GSoC 2024 contribution guidelines
 
 # Step 0 - Prior Reading
 
@@ -24,13 +24,13 @@ even before GSoC starts!
 
 ## **Idea** Issue Tracker
 
-The CHIPS Alliance organization has a
-[dedicated issue tracker](https://github.com/chipsalliance/ideas)
+The CHIPS Alliance organization has 
+[dedicated markdown list for specific years](https://github.com/chipsalliance/ideas)
 that lists tasks that are suitable to be completed as part of GSoC.
 
 ## Can I work on XXX?
 
-If an idea is listed in our [Idea issue tracker](https://github.com/chipsalliance/ideas/issues), it's probably
+If an idea is listed in the list mentioned above, it's probably
 a good one!
 
 ## What should I work on?
@@ -54,19 +54,18 @@ The following links detail general ways to write a successful Summer of Code Pro
 * [Inkscape's Accepted Proposals](http://wiki.inkscape.org/wiki/index.php/SOC_Accepted_Proposals)
 * [RedHat's experience](https://opensource.com/article/21/10/google-summer-code)
 
-
 ## Tips
 
 Having reviewed many proposals in the past years, there are a couple of things that many of them seem to
 be lacking. This list of tips should help you avoid common mistakes and make
 your proposals better.
 
-### **Tip 1** - Include Slack Nickname
+### **Tip 1** - Include Slack and GitHub Nickname
 
-Include your Slack nick as the first thing in the detailed description.
+Include your Slack and GitHub nicks as the first thing in the detailed description.
 
 During Summer of Code hundreds of new people turn up, keeping records straight
-can become a bit of a challenge. Especially when your Slack nick, email address and real name have
+can become a bit of a challenge. Especially when your Slack and/or GitHub nick, email address and real name have
 no resemblance.
 
 ### **Tip 2** - **Project First**, Resume Second
@@ -193,8 +192,6 @@ The following are conditions that automatically result in rejection:
  * Proposer must be at least 18 years old at time of registration.
  * Proposer must be eligible to work in their country of residence during the duration of the program.
  * Proposer must be a resident of a country not currently embargoed by the United States.
-
-
 
 # Step 4 - Fixing your first bug
 
