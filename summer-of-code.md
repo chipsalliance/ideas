@@ -1,4 +1,4 @@
-# CHIPS Alliance project GSoC 2024 contribution guidelines
+# CHIPS Alliance project GSoC contribution guidelines
 
 # Step 0 - Prior Reading
 
