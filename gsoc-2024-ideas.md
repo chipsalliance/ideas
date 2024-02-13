@@ -6,6 +6,7 @@
 1. [Support Zvk in T1(RISC-V Vector coprocessor](#support-zvk-in-t1risc-v-vector-coprocessor)
 1. [Spartan6 bitstream documentation](#spartan6-bitstream-documentation)
 1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7)
+1. [Interactive Python interpreter for Synlig](#interactive-python-interpreter-for-synlig)
 
 ## Create a GDS reader/writer in OpenROAD
 
@@ -186,3 +187,31 @@ Easy: The task mostly requires getting familiar with the methodology used in oth
 _Duration_: 175 hours
 
 _Mentor_: [@mkurc-ant](https://github.com/mkurc-ant)
+
+## Interactive Python interpreter for [Synlig](https://github.com/chipsalliance/synlig)
+
+TCL interpreters are ubiquitous among various RTL design tools.
+Likewise Synlig relies on the TCL interpreter provided by Yosys.
+This is starting to change, more and more modern tools start migrating to more modern languages as interpreters.
+The goal of this project is to equip Synlig with its own, optional Python interpreter.
+It should be possible to use it both interactively and through standalone Python scripts.
+
+### Expected Outcome
+
+As a result of this project, the following should be achieved:
+
+* Built-in Python interpreter for Synlig (external interpreters can be used), with capabilities that match the current TCL interpreter
+* Python bindings that allow Python scripting with capabilities that match the current TCL scripting possibilities
+
+### Skills Required
+
+* Programming languages: C++, Python, a rudimentary knowledge of TCL
+* Nice to have: HDL languages (Verilog)
+
+### Difficulty
+
+Medium: The project requires getting acquainted with the codebase of Synlig, requires expertise in multiple programming languages and some knowledge about integration of third-party libraries with the project.
+
+_Duration_: 350 hours
+
+_Mentor_: [@tgorochowik](https://github.com/tgorochowik)
