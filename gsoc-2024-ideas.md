@@ -90,11 +90,8 @@ OpenFASoC currently uses OpenROAD’s RTL-to-GDSII flow by supplying verilog sou
 ### Task Description 
 
 1. Implement a python class containing global design parameters and flow configs
-
 1. Implement modules containing information on the set of parameters generate the dataset on
-
 1. Implement a machine learning algorithm to optimize parameters based on the application (as an example, Reinforcement Learning can be used)
-
 1. Select best set of parameters for the final build
 
 ### Expected Outcomes 
@@ -116,16 +113,15 @@ _Duration_: 350 hours
 _Mentor_: [@msaligane](https://github.com/msaligane)
 
 ### Support Zvk in T1(RISC-V Vector coprocessor)
-T1 is a Cray-like long vector machine for RISC-V Vector. Zvk is the RISC-V vector cryptographic specification. The goal of this project is adding ZvK support to T1, being able to execute Zvk instruction in T1.
+
+T1 is a Cray-like long vector machine for RISC-V Vector.
+Zvk is the RISC-V vector cryptographic specification. The goal of this project is adding ZvK support to T1, being able to execute Zvk instruction in T1.
 
 ### Task Description 
 
 1. Adding corresponding decoding logic to T1.
-
 1. Deciding the micro-architecture of Zvk, adding documentation.
-
 1. Implementing the RTL in T1.
-
 1. Testing Zvk in differnt configurations, adding CI to make it maintainable.
 
 ### Difficulty
@@ -136,16 +132,20 @@ _Duration_: 175 hours
 
 _Mentor_: [@sequencer](https://github.com/sequencer)
 
-## Spartan6 bitstream documentation
+## Spartan6 FPGA bitstream documentation for F4PGA
 
-Spartan6 is a popular FPGA from AMD (formerly Xilinx) which is still used in many boards on the market today. For exactly this reason there is continuous interest in creating an open source toolchain for this architecture. There has already been some work in F4PGA with regard to this architecture. Namely, it’s possible to read the original bitstream and convert to a textual representation of its content in the form of what bits in which frame are active. F4PGA tools can also generate a bitstream from a textual representation.
-The missing part falls into the scope of project X-Ray where the meaning of those bits found in the bitstream has to be determined.
-The idea is to extend the existing set of project X-Ray infrastructure/tools/fuzzers to document the information which bits correspond to what features of the Spartan6 architecture
+Spartan6 is a popular FPGA from AMD (formerly Xilinx) which is still used in many boards on the market today.
+For exactly this reason there is continued interest in creating an open source toolchain for this architecture.
+There has already been some work in F4PGA with regard to this architecture, namely, it's possible to read the original bitstream and convert to a textual representation of its content in the form of what bits in which frame are active.
+F4PGA tools can also generate a bitstream from a textual representation.
+The missing part falls into the scope of project X-Ray where the meaning of the bits found in the bitstream has to be determined.
+The idea is to extend the existing set of project X-Ray infrastructure/tools/fuzzers to document the information which bits correspond to what features of the Spartan6 architecture.
 
 ### Expected Outcome
 
 As a result of this work some basic fuzzers required in X-Ray for a small Spartan6 FPGA (e.g. XC6SLX9) will be created.
-One of them is the part fuzzer which produces the information about how many configuration columns and rows there are. Another is the tilegrid fuzzer which lists what tiles the FPGA is built on.
+One of them is the part fuzzer which produces the information about how many configuration columns and rows there are.
+Another is the tilegrid fuzzer which lists what tiles the FPGA is built on.
 
 ### Skills Required
 
@@ -155,17 +155,24 @@ One of them is the part fuzzer which produces the information about how many con
 
 ### Difficulty
 
-Hard: This project requires some deeper understanding of FPGA architectures. Experience with the ISE tool and TCL scripting language is useful for this task. Python and C++ are vital to create or enhance existing tools used in X-Ray.
+Hard: This project requires some deeper understanding of FPGA architectures.
+Experience with the ISE tool and TCL scripting language is useful for this task.
+Python and C++ are vital to create or enhance existing tools used in X-Ray.
 
 _Duration_: 350 hours
 
 _Mentor_: [@tmichalak](https://github.com/tmichalak)
 
-## Document XADC and `DNA_PORT` blocks for Xilinx Series 7
+## Document XADC and `DNA_PORT` blocks for Xilinx Series 7 for F4PGA
 
-Among other dedicated hard-blocks performing functionality that cannot be implemented directly using FPGA fabric Xilinx 7-series devices provide the `XADC` block and `DNA_PORT` block. The former is a generic dual 12-bit A/C converter capable not only of sampling external voltages but also reading the device's internal sensors like the temperature sensor. The latter block allows accessing unique device identification data a.k.a. "DNA".
+F4PGA's open source FPGA flow depends on so-called [architecture definitions](https://github.com/SymbiFlow/f4pga-arch-defs), which are hardware descriptions of specific FPGAs that enable using specific configurable and hard blocks.
+Documentation of Xilinx 7-series hard blocks is covered by [project X-Ray](https://github.com/SymbiFlow/prjxray).
+This documentation is however not complete, and feature-parity with closed tools requires more work in documenting additional FPGA blocks.
 
-F4PGA’s FPGA flow depends on so-called [architecture definitions](https://github.com/SymbiFlow/f4pga-arch-defs), which are hardware descriptions of specific FPGAs that enable using specific configurable and hard blocks. Documentation of Xilinx 7-series hard blocks is covered by [project X-Ray](https://github.com/SymbiFlow/prjxray).
+Among other dedicated hard-blocks performing functionality that cannot be implemented directly using the FPGA fabric, the Xilinx 7-series devices provide the `XADC` block and `DNA_PORT` block.
+The former is a generic dual 12-bit A/C converter capable not only of sampling external voltages but also reading the device's internal sensors like the temperature sensor.
+The latter block allows accessing unique device identification data a.k.a. "DNA".
+
 The task is to extend the existing fuzzer to document all XADC related configuration bits as well as create a new fuzzer for the DNA block so that they become available in the open source flow.
 
 ### Expected Outcome
@@ -190,11 +197,10 @@ _Mentor_: [@mkurc-ant](https://github.com/mkurc-ant)
 
 ## Interactive Python interpreter for [Synlig](https://github.com/chipsalliance/synlig)
 
-TCL interpreters are ubiquitous among various RTL design tools.
-Likewise Synlig relies on the TCL interpreter provided by Yosys.
-This is starting to change, more and more modern tools start migrating to more modern languages as interpreters.
-The goal of this project is to equip Synlig with its own, optional Python interpreter.
-It should be possible to use it both interactively and through standalone Python scripts.
+Synlig is a SystemVerilog-capable front-end to Yosys.
+Like many RTL design tools, currently Synlig relies on the TCL interpreter provided by Yosys.
+More and more tools in the space are however adopting modern languages like Python as their interpreters which opens up a lot of powerful capabilities and integrations, and better fits the expected skillset of a more general software audience.
+The goal of this project is to add its own, optional Python interpreter to Synlig, which would enable usage both interactively and through standalone Python scripts.
 
 ### Expected Outcome
 
