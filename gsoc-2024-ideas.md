@@ -3,6 +3,9 @@
 1. [Create a GDS reader/writer in OpenROAD](#create-a-gds-reader-writer-in-openroad)
 1. [Implement a common-pythonic API for the OpenROAD flow in OpenFASoC](#implement-a-common-pythonic-api-for-the-openroad-flow-in-openfasoc)
 1. [Python based ORFs with parallelized hierarchical runs](#python-based-orfs-with-parallelized-hierarchical-runs)
+1. [Support Zvk in T1(RISC-V Vector coprocessor](#support-zvk-in-t1risc-v-vector-coprocessor)
+1. [Spartan6 bitstream documentation](#spartan6-bitstream-documentation)
+1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7)
 
 ## Create a GDS reader/writer in OpenROAD
 
@@ -131,3 +134,55 @@ Hard: Need strong capability in RTL designing and cryptographic knowledge. Need 
 _Duration_: 175 hours
 
 _Mentor_: [@sequencer](https://github.com/sequencer)
+
+## Spartan6 bitstream documentation
+
+Spartan6 is a popular FPGA from AMD (formerly Xilinx) which is still used in many boards on the market today. For exactly this reason there is continuous interest in creating an open source toolchain for this architecture. There has already been some work in F4PGA with regard to this architecture. Namely, it’s possible to read the original bitstream and convert to a textual representation of its content in the form of what bits in which frame are active. F4PGA tools can also generate a bitstream from a textual representation.
+The missing part falls into the scope of project X-Ray where the meaning of those bits found in the bitstream has to be determined.
+The idea is to extend the existing set of project X-Ray infrastructure/tools/fuzzers to document the information which bits correspond to what features of the Spartan6 architecture
+
+### Expected Outcome
+
+As a result of this work some basic fuzzers required in X-Ray for a small Spartan6 FPGA (e.g. XC6SLX9) will be created.
+One of them is the part fuzzer which produces the information about how many configuration columns and rows there are. Another is the tilegrid fuzzer which lists what tiles the FPGA is built on.
+
+### Skills Required
+
+* Familiar with the following tools: Vivado, ISE
+* Programming/scripting languages: TCL, Python, C++
+* HDL languages: Verilog
+
+### Difficulty
+
+Hard: This project requires some deeper understanding of FPGA architectures. Experience with the ISE tool and TCL scripting language is useful for this task. Python and C++ are vital to create or enhance existing tools used in X-Ray.
+
+_Duration_: 350 hours
+
+_Mentor_: [@tmichalak](https://github.com/tmichalak)
+
+## Document XADC and `DNA_PORT` blocks for Xilinx Series 7
+
+Among other dedicated hard-blocks performing functionality that cannot be implemented directly using FPGA fabric Xilinx 7-series devices provide the `XADC` block and `DNA_PORT` block. The former is a generic dual 12-bit A/C converter capable not only of sampling external voltages but also reading the device's internal sensors like the temperature sensor. The latter block allows accessing unique device identification data a.k.a. "DNA".
+
+F4PGA’s FPGA flow depends on so-called [architecture definitions](https://github.com/SymbiFlow/f4pga-arch-defs), which are hardware descriptions of specific FPGAs that enable using specific configurable and hard blocks. Documentation of Xilinx 7-series hard blocks is covered by [project X-Ray](https://github.com/SymbiFlow/prjxray).
+The task is to extend the existing fuzzer to document all XADC related configuration bits as well as create a new fuzzer for the DNA block so that they become available in the open source flow.
+
+### Expected Outcome
+
+As a result of this task 2 complete fuzzers shall be created:
+
+* `XADC` fuzzer which will be the extended version of the existing fuzzer for XADC that will generate the list of XADC related features and the bits corresponding to them
+* `DNA_PORT` fuzzer that will generate the list of DNA_PORT related features and corresponding bits
+
+### Skills Required
+
+* Scripting languages: TCL
+* HDL languages: Verilog
+
+### Difficulty
+
+Easy: The task mostly requires getting familiar with the methodology used in other X-Ray fuzzers and reusing existing or coming up with your own approach to get the expected outcome.
+
+_Duration_: 175 hours
+
+_Mentor_: [@mkurc-ant](https://github.com/mkurc-ant)
