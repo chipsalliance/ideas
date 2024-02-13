@@ -110,3 +110,24 @@ Medium/Hard: It is advisable to have knowledge on machine learning and hyperpara
 _Duration_: 350 hours
 
 _Mentor_: [@msaligane](https://github.com/msaligane)
+
+### Support Zvk in T1(RISC-V Vector coprocessor)
+T1 is a Cray-like long vector machine for RISC-V Vector. Zvk is the RISC-V vector cryptographic specification. The goal of this project is adding ZvK support to T1, being able to execute Zvk instruction in T1.
+
+### Task Description 
+
+1. Adding corresponding decoding logic to T1.
+
+1. Deciding the micro-architecture of Zvk, adding documentation.
+
+1. Implementing the RTL in T1.
+
+1. Testing Zvk in differnt configurations, adding CI to make it maintainable.
+
+### Difficulty
+
+Hard: Need strong capability in RTL designing and cryptographic knowledge. Need to understand the micro-architecture of vector processor. Need to write 1k lines of Scala code.
+
+_Duration_: 175 hours
+
+_Mentor_: [@sequencer](https://github.com/sequencer)
