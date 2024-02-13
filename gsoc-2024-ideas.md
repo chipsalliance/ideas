@@ -128,6 +128,6 @@ T1 is a Cray-like long vector machine for RISC-V Vector. Zvk is the RISC-V vecto
 
 Hard: Need strong capability in RTL designing and cryptographic knowledge. Need to understand the micro-architecture of vector processor. Need to write 1k lines of Scala code.
 
-_Duration_: 100 hours
+_Duration_: 175 hours
 
 _Mentor_: [@sequencer](https://github.com/sequencer)
