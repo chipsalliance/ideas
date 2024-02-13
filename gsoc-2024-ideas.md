@@ -3,7 +3,7 @@
 1. [Create a GDS reader/writer in OpenROAD](#create-a-gds-reader-writer-in-openroad)
 1. [Implement a common-pythonic API for the OpenROAD flow in OpenFASoC](#implement-a-common-pythonic-api-for-the-openroad-flow-in-openfasoc)
 1. [Python based ORFs with parallelized hierarchical runs](#python-based-orfs-with-parallelized-hierarchical-runs)
-1. [Support Zvk in T1(RISC-V Vector coprocessor](#support-zvk-in-t1risc-v-vector-coprocessor)
+1. [Support Zvk in T1 (RISC-V Vector coprocessor)](#support-zvk-in-t1risc-v-vector-coprocessor)
 1. [Spartan6 bitstream documentation](#spartan6-bitstream-documentation)
 1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7)
 1. [Interactive Python interpreter for Synlig](#interactive-python-interpreter-for-synlig)
@@ -112,7 +112,7 @@ _Duration_: 350 hours
 
 _Mentor_: [@msaligane](https://github.com/msaligane)
 
-### Support Zvk in T1(RISC-V Vector coprocessor)
+### Support Zvk in T1 (RISC-V Vector coprocessor)
 
 T1 is a Cray-like long vector machine for RISC-V Vector.
 Zvk is the RISC-V vector cryptographic specification. The goal of this project is adding ZvK support to T1, being able to execute Zvk instruction in T1.
