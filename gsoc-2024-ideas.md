@@ -1,6 +1,6 @@
 # CHIPS Alliance GSoC 2024 project ideas 
 
-1. [Create a GDS reader/writer in OpenROAD](#create-a-gds-reader-writer-in-openroad)
+1. [Create a GDS reader/writer in OpenROAD](#create-a-gds-readerwriter-in-openroad)
 1. [Implement a common-pythonic API for the OpenROAD flow in OpenFASoC](#implement-a-common-pythonic-api-for-the-openroad-flow-in-openfasoc)
 1. [Python based ORFs with parallelized hierarchical runs](#python-based-orfs-with-parallelized-hierarchical-runs)
 1. [Support Zvk in T1 (RISC-V Vector coprocessor)](#support-zvk-in-t1risc-v-vector-coprocessor)
