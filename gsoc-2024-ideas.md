@@ -3,9 +3,9 @@
 1. [Create a GDS reader/writer in OpenROAD](#create-a-gds-readerwriter-in-openroad)
 1. [Implement a common-pythonic API for the OpenROAD flow in OpenFASoC](#implement-a-common-pythonic-api-for-the-openroad-flow-in-openfasoc)
 1. [Python based ORFs with parallelized hierarchical runs](#python-based-orfs-with-parallelized-hierarchical-runs)
-1. [Support Zvk in T1 (RISC-V Vector coprocessor)](#support-zvk-in-t1risc-v-vector-coprocessor)
-1. [Spartan6 bitstream documentation](#spartan6-bitstream-documentation)
-1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7)
+1. [Support Zvk in T1 (RISC-V Vector coprocessor)](#support-zvk-in-t1-risc-v-vector-coprocessor)
+1. [Spartan6 bitstream documentation](#spartan6-fpga-bitstream-documentation-for-f4pga)
+1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7-for-f4pga)
 1. [Interactive Python interpreter for Synlig](#interactive-python-interpreter-for-synlig)
 
 ## Create a GDS reader/writer in OpenROAD
