@@ -7,6 +7,7 @@
 1. [Spartan6 bitstream documentation](#spartan6-fpga-bitstream-documentation-for-f4pga)
 1. [Document XADC and `DNA_PORT` blocks for Xilinx Series 7](#document-xadc-and-dna_port-blocks-for-xilinx-series-7-for-f4pga)
 1. [Interactive Python interpreter for Synlig](#interactive-python-interpreter-for-synlig)
+1. [Virtual lab environment for Tiny Tapeout](#virtual-lab-environment-for-tiny-tapeout)
 
 ## Create a GDS reader/writer in OpenROAD
 
@@ -221,3 +222,65 @@ Medium: The project requires getting acquainted with the codebase of Synlig, req
 _Duration_: 350 hours
 
 _Mentor_: [@tgorochowik](https://github.com/tgorochowik)
+
+## Virtual Lab Environment for Tiny Tapeout
+
+Semiconductor fabrication is an expensive endeavor that has traditionally been beyond the reach of most students and hobbyists (and even companies). In recent years, "democratization of semiconductors" and "semiconductor workforce development" are getting a great deal of attention, the goal being to make semiconductors and semiconductor education more accessible. Several technologies and initiatives are coming together on this common mission:
+
+ - ChipIgnite is a program offered by [Efabless](https://efabless.com) providing inexpensive multi-project wafer fabrication.
+ - [Tiny Tapeout](https://tinytapeout.com) subdivides the ChipIgnite silicon area into 250 smaller tiles that can be used individually at a very low cost.
+ - The free online [Makerchip](https://makerchip.com) design environment by [Redwood EDA](https://redwoodeda.com) lowers the barrier to entry into digital circuit design.
+
+Recently, these technologies have been used in [workforce development training](https://github.com/efabless/chipcraft---mest-course) to enable newcomers to learn digital logic design and fabricate their own Tiny Tapeouts in a relatively short period of time.
+
+In these classes, learners utilize three levels of hardware modeling:
+
+1. A simulation-based virtual lab environment. This is provided as open-source code that runs within Makerchip. It virtualizes the physical Tiny Tapeout boards showing input switch settings and output LEDs.
+2. FPGA-based "Demo Boards" look and act like the ASIC boards learners will later receive but can be reprogrammed to support development.
+3. The ultimate ASIC boards are fabricated and assembled, containing the learners' taped-out designs.
+
+The virtual lab environment currently virtualizes the Tiny Tapeout board only. This board has I/Os that can interface with external [Pmod](https://digilent.com/reference/pmod/start) devices. This project will extend the virtual lab environment to virtualize various Pmod devices. The lab bench setup will be configured within the user's source code to define the use of Pmod devices and controllers for those Pmods. This project may include the development of some of those controllers and the infrastructure for selecting them. This lab environment is based on a more-general environment for FPGA development, and this work can be applied more generally in that environment as well.
+
+### Task Description
+
+1. Acquire the necessary hardware (Tiny Tapeout Demo boards, Pmods, cables). These can be purchased and shipped by mentors, but applicants should confirm shipping requirements with mentors before applying.)
+
+1. Get familiar with the technologies listed under "Further Reading". This will be a substantial portion of the project.
+
+1. Develop Pmod visualizations.
+
+1. Develop mechanisms for lab bench configuration (Pmod selection).
+
+1. Develop Pmod controllers.
+
+1. Write clear and concise documentation.
+
+### Expected Outcomes
+
+A rich lab environment for developing Verilog-based designs for Tiny Tapeout and FPGA platforms.
+
+### Required Skills
+
+* TL-Verilog
+* M5 (text processing language used with TL-Verilog)
+* JavaScript (for visualization)
+* GitHub
+* FPGA development
+* An ability to thrive in a rapidly evolving ecosystem.
+
+### Difficulty
+
+Medium/Hard: The project will expose the applicant to several emerging technologies.
+
+_Duration_: 350 hours
+
+_Mentors_: [@stevehoover](https://github.com/stevehoover), [@jeffdi](https://github.com/jeffdi), [@mattvenn](https://github.com/mattvenn)
+
+### Further Reading
+
+* Various specs within [Makerchip](https://makerchip.com) IDE including TL-Verilog spec, M5 spec, TL-Verilog Macros Guide, and Visual Debug Spec.
+* [Tiny Tapeout](https://tinytapeout.com/)
+* Current [workforce development course content](https://github.com/efabless/chipcraft---mest-course) including code templates
+* [Virtual FPGA Lab](https://github.com/os-fpga/Virtual-FPGA-Lab)
+* Current [Tiny Tapeout virtual lab environment](https://github.com/os-fpga/Virtual-FPGA-Lab/blob/tt/tlv_lib/tiny_tapeout_lib.tlv)
+* [Pmods](https://digilent.com/reference/pmod/start)
